@@ -26,23 +26,20 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private GridLayout gridLayout;
     private Boolean gameOver = false;
+    private TextView textView3,textView4;
+    private int s1,s2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        playerChoices[0] = Player.NoOne;
-        playerChoices[1] = Player.NoOne;
-        playerChoices[2] = Player.NoOne;
-        playerChoices[3] = Player.NoOne;
-        playerChoices[4] = Player.NoOne;
-        playerChoices[5] = Player.NoOne;
-        playerChoices[6] = Player.NoOne;
-        playerChoices[7] = Player.NoOne;
-        playerChoices[8] = Player.NoOne;
+        setNoOne();
         button = findViewById(R.id.button);
         textView2 = findViewById(R.id.textView2);
         gridLayout = findViewById(R.id.gridLayout);
+        textView3 = findViewById(R.id.textView3);
+        textView4 = findViewById(R.id.textView4);
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +64,16 @@ public class MainActivity extends AppCompatActivity {
         if (currentPlayer == Player.ONE) {
             tappedImageView.setImageResource(R.drawable.lion);
             currentPlayer = Player.TWO;
-            textView2.setText("Current Player : Player 2");
+            s1++;
+            textView3.setText(s1+"");
+            textView2.setText("Player 2");
         }
         else if (currentPlayer==Player.TWO){
             tappedImageView.setImageResource(R.drawable.tiger);
             currentPlayer = Player.ONE;
-            textView2.setText("Current Player : Player 1");
+            s2++;
+            textView4.setText(s2+"");
+            textView2.setText("Player 1");
         }
 
         tappedImageView.animate().translationXBy(2000).alpha(1f).rotation(3600).setDuration(2000);
@@ -110,19 +111,20 @@ public class MainActivity extends AppCompatActivity {
         }
         currentPlayer=Player.ONE;
 
-        playerChoices[0] = Player.NoOne;
-        playerChoices[1] = Player.NoOne;
-        playerChoices[2] = Player.NoOne;
-        playerChoices[3] = Player.NoOne;
-        playerChoices[4] = Player.NoOne;
-        playerChoices[5] = Player.NoOne;
-        playerChoices[6] = Player.NoOne;
-        playerChoices[7] = Player.NoOne;
-        playerChoices[8] = Player.NoOne;
+        setNoOne();
+
         gameOver = false ;
 
         button.setVisibility(View.INVISIBLE);
+        s1=0;s2=0;
+        textView4.setText(s1+"");
+        textView3.setText(s2+"");
 
     }
 
+        private void setNoOne (){
+            for (int j=0;j<playerChoices.length;j++){
+                playerChoices[j] = Player.NoOne;
+            }
+        }
 }

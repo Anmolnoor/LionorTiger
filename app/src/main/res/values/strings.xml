@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LionorTiger</string>
+    <string name="current_player_player_1">Current Player : Player 1</string>
 </resources>

@@ -32,7 +32,8 @@
             android:padding="1dp"
             android:tag="0"
             app:layout_column="0"
-            app:layout_row="0" />
+            app:layout_row="0"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -45,7 +46,8 @@
             android:padding="1dp"
             android:tag="1"
             app:layout_column="1"
-            app:layout_row="0" />
+            app:layout_row="0"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -157,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Current Player : Player 1"
+        android:text="@string/current_player_player_1"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

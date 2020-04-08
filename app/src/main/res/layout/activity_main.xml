@@ -9,6 +9,7 @@
 
 
     <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFC821"
@@ -28,12 +29,12 @@
             android:layout_margin="5dp"
             android:alpha=".3"
             android:background="#48EA4E"
+            android:contentDescription="TODO"
             android:onClick="imageIsClicked"
             android:padding="1dp"
             android:tag="0"
             app:layout_column="0"
-            app:layout_row="0"
-            android:contentDescription="TODO" />
+            app:layout_row="0" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -42,12 +43,12 @@
             android:layout_margin="5dp"
             android:alpha=".3"
             android:background="#48EA4E"
+            android:contentDescription="TODO"
             android:onClick="imageIsClicked"
             android:padding="1dp"
             android:tag="1"
             app:layout_column="1"
-            app:layout_row="0"
-            android:contentDescription="TODO" />
+            app:layout_row="0" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -164,5 +165,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="#604BE6"
+        android:text="Reset The Game"
+        android:textColor="#23EC44"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,11 @@
 package com.anmolnoor.lionortiger;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.gridlayout.widget.GridLayout;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     int [][] winnerRowColumn = {{0,1,2},{3,4,5},{6,7,8},{0,4,8},{0,3,6},{1,4,7},{2,5,8},{2,4,6}};
 
     TextView textView2;
+    private Button button;
+    private GridLayout gridLayout;
+    private Boolean gameOver = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,16 @@ public class MainActivity extends AppCompatActivity {
         playerChoices[6] = Player.NoOne;
         playerChoices[7] = Player.NoOne;
         playerChoices[8] = Player.NoOne;
+        button = findViewById(R.id.button);
         textView2 = findViewById(R.id.textView2);
+        gridLayout = findViewById(R.id.gridLayout);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetTheGame();
+            }
+        });
 
 
     }
@@ -43,8 +57,11 @@ public class MainActivity extends AppCompatActivity {
     public void imageIsClicked(View imageView){
 
         ImageView tappedImageView =(ImageView) imageView;
-        tappedImageView.setTranslationX(-2000);
         int num = Integer.parseInt(tappedImageView.getTag().toString());
+
+        if (playerChoices[num]==Player.NoOne && !gameOver){
+        tappedImageView.setTranslationX(-2000);
+
         playerChoices[num] = currentPlayer;
 
         if (currentPlayer == Player.ONE) {
@@ -67,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
                     && playerChoices[winnercolumn[1]]==playerChoices[winnercolumn[2]]
                 && playerChoices[winnercolumn[0]]!=Player.NoOne){
 
+                button.setVisibility(View.VISIBLE);
+
+                gameOver=true;
+
                 if (currentPlayer==Player.ONE){
                     Toast.makeText(MainActivity.this,"Player 2 is the Winner",Toast.LENGTH_LONG).show();
                 }else if (currentPlayer==Player.TWO){
@@ -76,8 +97,32 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        }
     }
 
+    //reset game function
 
+    private void resetTheGame(){
+        for (int i = 0; i<gridLayout.getChildCount();i++){
+            ImageView imageView = (ImageView) gridLayout.getChildAt(i);
+            imageView.setImageDrawable(null);
+            imageView.setAlpha(.3f);
+        }
+        currentPlayer=Player.ONE;
+
+        playerChoices[0] = Player.NoOne;
+        playerChoices[1] = Player.NoOne;
+        playerChoices[2] = Player.NoOne;
+        playerChoices[3] = Player.NoOne;
+        playerChoices[4] = Player.NoOne;
+        playerChoices[5] = Player.NoOne;
+        playerChoices[6] = Player.NoOne;
+        playerChoices[7] = Player.NoOne;
+        playerChoices[8] = Player.NoOne;
+        gameOver = false ;
+
+        button.setVisibility(View.INVISIBLE);
+
+    }
 
 }
